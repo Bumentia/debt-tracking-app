@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>บันทึกการติดตามหนี้</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        background-color: #f7f7f7;
+      }
+      input, select, textarea {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+      }
+      th, td {
+        padding: 8px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      th {
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📄 บันทึกผลการติดตามลูกหนี้</h1>
+
+    <label>ชื่อลูกหนี้</label>
+    <input type="text" id="name" placeholder="เช่น สมชาย ใจดี" />
+
+    <label>ทะเบียนรถ</label>
+    <input type="text" id="plate" placeholder="เช่น 1กก1234" />
+
+    <label>ผลการติดตาม</label>
+    <select id="status">
+      <option value="ติดตามสำเร็จ">ติดตามสำเร็จ</option>
+      <option value="ไม่พบลูกหนี้">ไม่พบลูกหนี้</option>
+      <option value="นัดชำระ">นัดชำระ</option>
+      <option value="เบอร์โทรผิด">เบอร์โทรผิด</option>
+    </select>
+
+    <label>หมายเหตุ</label>
+    <textarea id="note" placeholder="รายละเอียดเพิ่มเติม..."></textarea>
+
+    <button onclick="saveData()">💾 บันทึกข้อมูล</button>
+
+    <hr />
+
+    <h2>📋 รายการที่เคยบันทึกไว้</h2>
+
+    <label>🔎 ค้นหา (ชื่อหรือล้านทะเบียน):</label>
+    <input type="text" id="search" placeholder="พิมพ์คำค้น..." oninput="filterData()" />
+
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>เวลา</th>
+          <th>ชื่อลูกหนี้</th>
+          <th>ทะเบียน</th>
+          <th>ผลติดตาม</th>
+          <th>หมายเหตุ</th>
+          <th>ลบ</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
